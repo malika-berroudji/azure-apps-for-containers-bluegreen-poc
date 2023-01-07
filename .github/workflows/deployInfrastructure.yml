@@ -46,8 +46,8 @@ jobs:
         name: Run what-if
         with:
           inlineScript: |
-            az deployment group what-if --resource-group ${{ secrets.AZURE_RG }} --template-file ./deploy/main.bicep --parameters ./deploy/parameters.json
-
+            #az deployment group what-if --resource-group ${{ secrets.AZURE_RG }} --template-file ./deploy/main.bicep --parameters ./deploy/parameters.json
+            az deployment group what-if --resource-group ${{ secrets.AZURE_RG }} --template-uri https://github.com/malika-berroudji/azure-apps-for-containers-bluegreen-poc/blob/main/deploy/main.bicep --parameters ./deploy/parameters.json
   deploy:
     runs-on: ubuntu-latest
     environment: Dev
