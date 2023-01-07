@@ -46,7 +46,7 @@ jobs:
         name: Run what-if
         with:
           inlineScript: |
-            az deployment group what-if --resource-group ${{ secrets.AZURE_RG }} --template-file /deploy/main.bicep --parameters /deploy/parameters.json
+            az deployment group what-if --resource-group ${{ secrets.AZURE_RG }} --template-file ./deploy/main.bicep --parameters ./deploy/parameters.json --debug
   deploy:
     runs-on: ubuntu-latest
     environment: Dev
