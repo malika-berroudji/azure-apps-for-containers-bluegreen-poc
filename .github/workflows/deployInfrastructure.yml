@@ -23,7 +23,7 @@ jobs:
         name: Sign in to Azure
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
-      
+
       - uses: azure/arm-deploy@v1
         name: Run preflight validation
         with:
@@ -46,7 +46,7 @@ jobs:
         name: Run what-if
         with:
           inlineScript: |
-            az deployment group --resource-group ${{ secrets.AZURE_RG }} --template-file ./deploy/main.bicep --parameters ./deploy/parameters.json
+            az deployment group what-if --resource-group ${{ secrets.AZURE_RG }} --template-file ./deploy/main.bicep --parameters ./deploy/parameters.json
   deploy:
     runs-on: ubuntu-latest
     environment: Dev
@@ -57,7 +57,7 @@ jobs:
       - uses: azure/login@v1
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
-        
+
       - name: Deploy Bicep File
         uses: azure/arm-deploy@v1
         with:
